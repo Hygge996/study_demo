@@ -6,12 +6,17 @@ const server = http.createServer((request, response) => {
   let { method } = request;
   // 获取请求路径
   let { pathname } = new URL(request.url, 'http://127.0.0.1');
-  console.log(method);
-  console.log(pathname);
+
+  response.setHeader('Content-type', 'text/html;charset=utf-8');
+  // console.log(method);
+  // console.log(pathname);
   if (method === 'GET' && pathname === '/login') {
-    response.end('这是登录页面')
+    response.end('登录页面');
+  } else if (method === 'GET' && pathname === '/reg') {
+    response.end('注册页面');
+  } else {
+    response.end('404 Not Found');
   }
-  response.end('practise');
 })
 
 server.listen(9000, () => {
