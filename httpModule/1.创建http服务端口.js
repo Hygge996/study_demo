@@ -1,10 +1,10 @@
-const http = require('http')
+const http = require('http');
 
 const server = http.createServer((req, res) => {
-  console.log(req.method);
-  console.log(req.url);
-  console.log(req.headers);
-  res.end('Hello Http Server!')
+  let url = new URL(req.url, 'http://127.0.0.1:9000');
+  console.log(url.pathname);
+  console.log(url.searchParams.get('keyword'));
+  res.end('url new');
 })
 
 server.listen(9000, () => {
