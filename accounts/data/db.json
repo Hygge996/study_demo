@@ -1,0 +1,28 @@
+{
+  "accounts": [
+    {
+      "id": "8C-9Vr_4d",
+      "title": "发工资",
+      "time": "2024-09-05",
+      "type": "-1",
+      "account": "12",
+      "remark": "搞钱搞钱3"
+    },
+    {
+      "id": "jQq74LpXy",
+      "title": "发工资",
+      "time": "2024-09-05",
+      "type": "-1",
+      "account": "12",
+      "remark": "搞钱搞钱2"
+    },
+    {
+      "id": "ePit2WWi3",
+      "title": "发工资",
+      "time": "2024-09-05",
+      "type": "-1",
+      "account": "12",
+      "remark": "搞钱搞钱2"
+    }
+  ]
+}
