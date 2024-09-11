@@ -5,8 +5,12 @@
  */
 function db(success, error) {
   const mongoose = require('mongoose');
+  const {DBHOST, DBPORT, DBNAME} = require('../config/config.js');
 
-  mongoose.connect('mongodb://127.0.0.1:27017/bli');
+  mongoose.set('strictQuery', true);
+
+  //3. 连接 mongodb 服务                        数据库的名称
+  mongoose.connect(`mongodb://${DBHOST}:${DBPORT}/${DBNAME}`);
 
   /**
    * 设置回调
