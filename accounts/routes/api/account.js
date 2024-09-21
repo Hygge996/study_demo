@@ -36,6 +36,21 @@ router.get('/account/create', function(req, res, next) {
 
 //新增记录
 router.post('/account', (req, res) => {
+  console.log(req.body);
+  const { title, type, account } = req.body
+  // 添加拦截校验等功能用的代码，测试练习
+  // if (type === 1) {
+  //   res.json({
+  //     code: '1001',
+  //     // 响应信息
+  //     msg: '创建失败＞﹏＜',
+  //     // 响应数据
+  //     data: null
+  //   });
+  //   return
+  // }
+  
+  
   //插入数据库
   AccountModel.create({
     ...req.body,
@@ -48,7 +63,7 @@ router.post('/account', (req, res) => {
       // 响应编号
       code: '0000',
       // 响应信息
-      msg: '请求成功<(￣︶￣)↗[GO!]',
+      msg: '创建成功<(￣︶￣)↗[GO!]',
       // 响应数据
       data
     });
@@ -57,9 +72,9 @@ router.post('/account', (req, res) => {
     res.json({
       code: '1001',
       // 响应信息
-      msg: '读取失败＞﹏＜',
+      msg: '创建失败＞﹏＜',
       // 响应数据
-      data: err
+      data: null
     });
     return
   })
