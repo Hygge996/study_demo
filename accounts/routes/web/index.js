@@ -1,16 +1,9 @@
 var express = require('express');
 var router = express.Router();
-//导入 lowdb
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync(__dirname + '/../data/db.json');
-//获取 db 对象
-const db = low(adapter);
-//导入 shortid
-const shortid = require('shortid');
+
 //导入 moment
 const moment = require('moment');
-const AccountModel = require('../models/AccountModel');
+const AccountModel = require('../../models/AccountModel');
 
 //测试
 // console.log(moment('2023-02-24').toDate())
