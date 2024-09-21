@@ -19,11 +19,11 @@ router.get('/account', function(req, res, next) {
     });
   }).catch((err) => {
     res.json({
-      code: '1001',
+      code: '1002',
       // 响应信息
       msg: '读取失败＞﹏＜',
       // 响应数据
-      data: err
+      data: null
     });
     return;
   })
@@ -81,15 +81,25 @@ router.post('/account', (req, res) => {
 });
 
 //删除记录
-router.get('/account/:id', (req, res) => {
+router.delete('/account/:id', (req, res) => {
   //获取 params 的 id 参数
   let id = req.params.id;
   //删除
   AccountModel.deleteOne({_id: id}).then((data) => {
     //提醒
-    res.render('success', {msg: '删除成功~~~', url: '/account'});
+    res.json({
+      code: '0000',
+      msg: '删除成功<(￣︶￣)↗[GO!]',
+      data
+    });
   }).catch((err) => {
-    res.status(500).send('删除失败~');
+    res.json({
+      code: '1003',
+      // 响应信息
+      msg: '删除失败＞﹏＜',
+      // 响应数据
+      data: null
+    });
     return;
   })
 });
