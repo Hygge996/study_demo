@@ -1,10 +1,14 @@
+//导入 mongoose
 const mongoose = require('mongoose');
 
-const MovieSchema = mongoose.Schema({
-  name: String,
+// 创建文档结构
+const MovieSchema = new mongoose.Schema({
+  title: String,
   director: String
-})
+});
 
+//创建模型对象
 const MovieModel = mongoose.model('movie', MovieSchema);
 
+//暴露
 module.exports = MovieModel;
