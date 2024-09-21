@@ -18,7 +18,7 @@ const AccountModel = require('../models/AccountModel');
 // console.log(moment(new Date()).format('YYYY-MM-DD'));
 
 //记账本的列表
-router.get('/account', function(req, res, next) {
+router.get('/account', (req, res, next) => {
   //获取所有的账单信息
   // let accounts = db.get('accounts').value();
   //读取集合信息
