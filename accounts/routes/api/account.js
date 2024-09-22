@@ -122,4 +122,31 @@ router.get('/accounts/:id', (req, res) => {
   })
 })
 
+// 更新单条账单
+router.patch('/accounts/:id', (req, res) => {
+  const { id } = req.params;
+  AccountModel.updateOne({_id: id}, req.body).then((data) => {
+    AccountModel.findById(id).then((data) => {
+      res.json({
+        code: '0000',
+        msg: `更新账单成功`,
+        data
+      })
+    }).catch(() => {
+      res.json({
+        code: '1005',
+        msg: '获取单个账单失败',
+        data: null
+      })
+    })
+    
+  }).catch(() => {
+    res.json({
+      code: '1005',
+      msg: '更新单个账单失败',
+      data: null
+    })
+  })
+})
+
 module.exports = router;
