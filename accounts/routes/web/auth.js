@@ -25,12 +25,17 @@ router.get('/login', (req, res) => {
 // 登录
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-  UserModel.findOne({ username: username, password: md5(password)}).then((data) => {
+  UserModel.findOne({ username: username, password: md5(password)})
+  .then((data) => {
     console.log(data);
     
     if (!data) return res.send('登录失败')
+      
+    req.session.username = data.username;
+    req.session._id = data._id;
     res.render('success', { msg: '登录成功', url: '/account'});
-  }).catch(() => {
+  })
+  .catch(() => {
     res.status(500).send('登录失败')
   })
 })
