@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
+// 路由检测中间件
+let checkSessionMiddleware = require('../../middlewares/checkLogin');
 
 //导入 moment
 const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
+
 
 //测试
 // console.log(moment('2023-02-24').toDate())
@@ -11,7 +14,7 @@ const AccountModel = require('../../models/AccountModel');
 // console.log(moment(new Date()).format('YYYY-MM-DD'));
 
 //记账本的列表
-router.get('/account', function(req, res, next) {
+router.get('/account', checkSessionMiddleware, function(req, res, next) {
   //获取所有的账单信息
   // let accounts = db.get('accounts').value();
   //读取集合信息
@@ -25,12 +28,12 @@ router.get('/account', function(req, res, next) {
 });
 
 //添加记录
-router.get('/account/create', function(req, res, next) {
+router.get('/account/create', checkSessionMiddleware, function(req, res, next) {
   res.render('create');
 });
 
 //新增记录
-router.post('/account', (req, res) => {
+router.post('/account', checkSessionMiddleware, (req, res) => {
   //插入数据库
   AccountModel.create({
     ...req.body,
@@ -48,7 +51,7 @@ router.post('/account', (req, res) => {
 });
 
 //删除记录
-router.get('/account/:id', (req, res) => {
+router.get('/account/:id', checkSessionMiddleware, (req, res) => {
   //获取 params 的 id 参数
   let id = req.params.id;
   //删除
