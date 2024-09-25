@@ -30,13 +30,20 @@ router.post('/login', (req, res) => {
     console.log(data);
     
     if (!data) return res.send('登录失败')
-      
+
     req.session.username = data.username;
     req.session._id = data._id;
     res.render('success', { msg: '登录成功', url: '/account'});
   })
   .catch(() => {
     res.status(500).send('登录失败')
+  })
+})
+
+// 退出登录
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.render('success', { msg: '退出成功', url: '/login'})
   })
 })
 
