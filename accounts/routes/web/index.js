@@ -7,6 +7,11 @@ let checkSessionMiddleware = require('../../middlewares/checkLogin');
 const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
 
+// 首页
+router.get('/', (_, res) => {
+  // 重定向
+  res.redirect('/account');
+})
 
 //测试
 // console.log(moment('2023-02-24').toDate())
