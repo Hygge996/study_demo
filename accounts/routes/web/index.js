@@ -1,12 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 // 路由检测中间件
 let checkSessionMiddleware = require('../../middlewares/checkLogin');
-
 //导入 moment
 const moment = require('moment');
 const AccountModel = require('../../models/AccountModel');
 
+const router = express.Router();
 // 首页
 router.get('/', (_, res) => {
   // 重定向

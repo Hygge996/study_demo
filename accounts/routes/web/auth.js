@@ -1,9 +1,9 @@
-var express = require('express');
+const express = require('express');
 const md5 = require('md5');
-
-var router = express.Router();
-
 const UserModel  = require('../../models/UserModel');
+
+const router = express.Router();
+
 // 注册页
 router.get('/reg', (req, res) => {
   res.render('auth/auth')
